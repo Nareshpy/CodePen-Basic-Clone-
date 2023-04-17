@@ -1,0 +1,10 @@
+.output{
+    margin: 2%;
+    max-height: fit-content;
+}
+.output iframe{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    overflow-y: auto;
+}
