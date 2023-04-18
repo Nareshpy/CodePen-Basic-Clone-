@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Editor from './Editor';
 import './Editors.css'
 import Output from '../output/Output';
-import findMissingTags from '../../validator';
+import findMissingTags from '../../Validator';
 
 function Editors(): JSX.Element {
     const [html, setHtml] = useState("");
