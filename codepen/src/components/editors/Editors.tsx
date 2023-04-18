@@ -31,10 +31,9 @@ function Editors():JSX.Element {
     <script>${js}</script>
     </html>
     `
-    function validate(){
-        // console.log(run);
+    function validate():void{
         setRun(!run);
-        setCleanCode(findMissingTags(srcDoc));
+        setCleanCode(!findMissingTags(srcDoc));
         console.log(run,cleanCode);
     }
     return (
@@ -45,7 +44,7 @@ function Editors():JSX.Element {
                 <Editor title="JS" value={js} change={handleJsChange}></Editor>
             </div>
             <div>
-            <button onClick={()=>{validate();
+            <button onClick={()=>{validate()
             }}>Run</button>
             {(run && cleanCode)?<Output src={srcDoc}></Output>:""}
             </div>
