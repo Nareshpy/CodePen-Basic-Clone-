@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import Editor from './Editor';
 import './Editors.css'
 import Output from '../output/Output';
+import findMissingTags from '../../validator';
 
 function Editors():JSX.Element {
     const [html, setHtml] = useState("");
     const [css, setCss] = useState("");
     const [js, setJs] = useState("");
     const [run,setRun]=useState(false);
+    const [cleanCode,setCleanCode]=useState(true);
     useEffect(()=>{
         if(run){
             setRun(!run);
@@ -29,6 +31,12 @@ function Editors():JSX.Element {
     <script>${js}</script>
     </html>
     `
+    function validate(){
+        // console.log(run);
+        setRun(!run);
+        setCleanCode(findMissingTags(srcDoc));
+        console.log(run,cleanCode);
+    }
     return (
         <>
             <div className='editors-container'>
@@ -37,8 +45,9 @@ function Editors():JSX.Element {
                 <Editor title="JS" value={js} change={handleJsChange}></Editor>
             </div>
             <div>
-            <button onClick={()=>{setRun(!run)}}>Run</button>
-            {run && <Output src={srcDoc}></Output>}
+            <button onClick={()=>{validate();
+            }}>Run</button>
+            {(run && cleanCode)?<Output src={srcDoc}></Output>:""}
             </div>
             
         </>
