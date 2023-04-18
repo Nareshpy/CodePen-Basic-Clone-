@@ -33,7 +33,7 @@ function Editors(): JSX.Element {
     `
     function validate(): void {
         setRun(!run);
-        setCleanCode(!findMissingTags(srcDoc));
+        //setCleanCode(!findMissingTags(srcDoc));
         console.log(run, cleanCode);
     }
     return (

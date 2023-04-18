@@ -1,7 +1,8 @@
 export default function findMissingTags(html: string): boolean {
     const stack: string[] = [];
     let error: boolean = false;
-    const tagRegex = /<\/?([a-z]+[0-9])[^>]*>/gi;
+    const tagRegex =/<\/?([a-z]+[0-9])[^>]*>/gi;
+    //const tagRegex =/<\/?([a-z]+[0-9]*)(?:\s+[a-z]+(?:\s*=\s*(?:"[^"]*"|'[^']*'))?)*\s*>/gi    ;
     let match;
     while ((match = tagRegex.exec(html)) !== null) {
         const tag = match[0];
