@@ -4,37 +4,37 @@ import './Editors.css'
 import Output from '../output/Output';
 import findMissingTags from '../../validator';
 
-function Editors():JSX.Element {
+function Editors(): JSX.Element {
     const [html, setHtml] = useState("");
     const [css, setCss] = useState("");
     const [js, setJs] = useState("");
-    const [run,setRun]=useState(false);
-    const [cleanCode,setCleanCode]=useState(true);
-    useEffect(()=>{
-        if(run){
+    const [run, setRun] = useState(false);
+    const [cleanCode, setCleanCode] = useState(true);
+    useEffect(() => {
+        if (run) {
             setRun(!run);
         }
-    },[html,css,js])
-    function handleHtmlChange(newValue: string):void {
+    }, [html, css, js])
+    function handleHtmlChange(newValue: string): void {
         setHtml(newValue);
     }
-    function handleCssChange(newValue: string):void {
+    function handleCssChange(newValue: string): void {
         setCss(newValue);
     }
-    function handleJsChange(newValue: string):void {
+    function handleJsChange(newValue: string): void {
         setJs(newValue);
     }
-    const srcDoc:string=`
+    const srcDoc: string = `
     <html>
     <body>${html}</body>
     <style>${css}</style>
     <script>${js}</script>
     </html>
     `
-    function validate():void{
+    function validate(): void {
         setRun(!run);
         setCleanCode(!findMissingTags(srcDoc));
-        console.log(run,cleanCode);
+        console.log(run, cleanCode);
     }
     return (
         <>
@@ -44,11 +44,12 @@ function Editors():JSX.Element {
                 <Editor title="JS" value={js} change={handleJsChange}></Editor>
             </div>
             <div>
-            <button onClick={()=>{validate()
-            }}>Run</button>
-            {(run && cleanCode)?<Output src={srcDoc}></Output>:""}
+                <button onClick={() => {
+                    validate()
+                }}>Run</button>
+                {(run && cleanCode) ? <Output src={srcDoc}></Output> : ""}
             </div>
-            
+
         </>
     )
 }

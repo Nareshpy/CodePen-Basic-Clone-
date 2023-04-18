@@ -1,9 +1,9 @@
 import Editors from '../editors/Editors';
 import "./Main.css";
-function Main() {
+function Main(): JSX.Element {
   return (
     <div className='main-container'>
-        <Editors></Editors>
+      <Editors></Editors>
     </div>
   )
 }

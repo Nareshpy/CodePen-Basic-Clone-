@@ -1,9 +1,9 @@
 import './App.css';
 import Main from './components/main/Main';
-function App() {
+function App(): JSX.Element {
   return (
     <>
-    <Main></Main>
+      <Main></Main>
     </>
   );
 }
